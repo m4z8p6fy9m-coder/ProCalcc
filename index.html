@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0d14">
+  <meta name="description" content="ProCalc – ein schneller, moderner wissenschaftlicher Taschenrechner.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>ProCalc</title>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="calculator" aria-label="Wissenschaftlicher Taschenrechner">
+      <header>
+        <div class="brand"><span class="brand-mark">P</span><span>ProCalc</span></div>
+        <div class="header-actions">
+          <button class="icon-button" id="themeButton" aria-label="Darstellung wechseln">☼</button>
+          <button class="icon-button" id="historyButton" aria-label="Verlauf öffnen">↺</button>
+        </div>
+      </header>
+
+      <div class="mode-row">
+        <div class="segmented" aria-label="Winkelmaß">
+          <button class="mode active" data-angle="DEG">DEG</button>
+          <button class="mode" data-angle="RAD">RAD</button>
+        </div>
+        <span id="memoryStatus" class="memory-status" aria-live="polite"></span>
+      </div>
+
+      <section class="display" aria-live="polite">
+        <div id="expression" class="expression">0</div>
+        <div id="result" class="result">0</div>
+      </section>
+
+      <div class="memory-row">
+        <button data-action="memory-clear">MC</button><button data-action="memory-recall">MR</button>
+        <button data-action="memory-add">M+</button><button data-action="memory-subtract">M−</button>
+      </div>
+
+      <div class="keypad">
+        <button class="function" data-value="sin(">sin</button><button class="function" data-value="cos(">cos</button><button class="function" data-value="tan(">tan</button><button class="function" data-value="π">π</button>
+        <button class="function" data-value="ln(">ln</button><button class="function" data-value="log(">log</button><button class="function" data-value="sqrt(">√</button><button class="operator" data-value="^">xʸ</button>
+        <button class="danger" data-action="clear">AC</button><button class="function" data-action="delete">⌫</button><button class="function" data-value="(">(</button><button class="function" data-value=")">)</button>
+        <button data-value="7">7</button><button data-value="8">8</button><button data-value="9">9</button><button class="operator" data-value="÷">÷</button>
+        <button data-value="4">4</button><button data-value="5">5</button><button data-value="6">6</button><button class="operator" data-value="×">×</button>
+        <button data-value="1">1</button><button data-value="2">2</button><button data-value="3">3</button><button class="operator" data-value="−">−</button>
+        <button data-action="sign">±</button><button data-value="0">0</button><button data-value="," aria-label="Komma">,</button><button class="operator" data-value="+">+</button>
+        <button class="function" data-value="e">e</button><button class="function" data-action="percent">%</button><button class="equals" data-action="equals">=</button>
+      </div>
+    </section>
+
+    <aside id="historyPanel" class="history-panel" aria-hidden="true">
+      <div class="history-header"><h2>Verlauf</h2><button id="closeHistory" class="icon-button" aria-label="Verlauf schließen">×</button></div>
+      <div id="historyList" class="history-list"><p class="empty">Noch keine Berechnungen.</p></div>
+      <button id="clearHistory" class="clear-history">Verlauf löschen</button>
+    </aside>
+  </main>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
